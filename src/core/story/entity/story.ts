@@ -1,19 +1,22 @@
-export class Story {
-    private id: string;
-    private title?: string;
-    private points?: string;
+import { StoryPoints } from "../../storyPoints/entity/storyPoints";
+import { StoryId } from "./storyId";
 
-    private constructor(id: string, title?: string, points?: string) {
+export class Story {
+    private id: StoryId;
+    private title?: string;
+    private points?: StoryPoints;
+
+    private constructor(id: StoryId, title?: string, points?: StoryPoints) {
         this.id = id;
         this.title = title;
         this.points = points;
     }
 
-    public computePoints(choosenPoint: string): void {
+    public computePoints(choosenPoint: StoryPoints): void {
         this.points = choosenPoint;
     }
 
-    public static create(id: string, title?: string, points?: string): Story {
+    public static create(id: StoryId, title?: string, points?: StoryPoints): Story {
         return new Story(id, title, points);
     }
 }
