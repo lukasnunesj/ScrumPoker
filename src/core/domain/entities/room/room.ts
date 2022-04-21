@@ -1,5 +1,5 @@
-import { Story } from "../../story/entity/story";
-import { User } from "../../user/entity/user";
+import { Story } from "../story/story";
+import { User } from "../user/user";
 import { RoomCode } from "./roomCode";
 import { RoomId } from "./roomId";
 

@@ -1,4 +1,4 @@
-import { StoryPoints } from "../../storyPoints/entity/storyPoints";
+import { StoryPoints } from "../storyPoints/storyPoints";
 import { StoryId } from "./storyId";
 
 export class Story {
