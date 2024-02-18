@@ -2,6 +2,7 @@ import express from "express";
 import "reflect-metadata";
 import { myDataSource } from "./adapters/data/data_source";
 import usuarioRouter from "./consumers/API/usuario/routes";
+import "./dependencies_container";
 
 const app = express();
 

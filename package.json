@@ -28,6 +28,7 @@
     "reflect-metadata": "^0.2.1",
     "socket.io": "^4.5.4",
     "sqlite3": "^5.1.7",
+    "tsyringe": "^4.8.0",
     "typeorm": "^0.3.20",
     "uuid": "^8.3.2",
     "uuid-validate": "^0.0.3"
