@@ -1,9 +1,3 @@
 export class UsuarioDTO {
-  nome: string;
-  id: string;
-
-  constructor(nome: string, id?: string) {
-    this.nome = nome;
-    this.id = id;
-  }
+  constructor(public nome: string, public id?: string) {}
 }

@@ -5,7 +5,6 @@ import "../../../dependencies_container";
 
 const usuarioRouter = Router();
 const usuariosController = container.resolve(UsuariosController);
-console.log(usuariosController.criarUsuario);
 
 usuarioRouter.post("/", (req, res) => {
   usuariosController.criarUsuario(req, res);

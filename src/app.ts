@@ -3,6 +3,7 @@ import "reflect-metadata";
 import { myDataSource } from "./adapters/data/data_source";
 import usuarioRouter from "./consumers/API/usuario/routes";
 import "./dependencies_container";
+import baralhoRouter from "./consumers/API/baralho/routes";
 
 const app = express();
 
@@ -18,6 +19,7 @@ myDataSource
 app.use(express.json());
 
 app.use("/usuarios", usuarioRouter);
+app.use("/baralhos", baralhoRouter);
 
 app.use(express.urlencoded({ extended: true }));
 
