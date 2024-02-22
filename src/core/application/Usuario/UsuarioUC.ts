@@ -3,9 +3,10 @@ import { Usuario } from "../../domain/entities/Usuario";
 import { IUsuarioRepository } from "../../domain/repositories/IUsuarioRepository";
 import { UsuarioRequest } from "./Requests/UsuarioRequest";
 import { UsuarioResponse } from "./Response/UsuarioResponse";
+import { IUsuarioUC } from "./Ports/IUsuarioUC";
 
 @injectable()
-export class UsuarioUC {
+export class UsuarioUC implements IUsuarioUC {
   constructor(
     @inject("IUsuarioRepository")
     private usuarioRepository: IUsuarioRepository

@@ -12,18 +12,27 @@ export class Usuario {
   }
 
   private setNome(nome: string) {
-    this.nome = nome;
+    if (nome) {
+      this.nome = nome.trim();
+    }
+    this.validation();
   }
 
-  private setId() {
-    this.id = v4();
+  private setId(id: string = v4()) {
+    this.id = id;
   }
+
   getNome() {
     return this.nome;
   }
 
   getId() {
     return this.id;
+  }
+
+  convertFromEntity(id: string) {
+    this.setId(id);
+    return this;
   }
 
   private validation() {

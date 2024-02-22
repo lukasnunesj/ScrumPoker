@@ -1,8 +1,15 @@
 import { Router } from "express";
-import { criarUsuario } from "./controllers/usuariosController";
+import { UsuariosController } from "./controllers/usuariosController";
+import { container } from "tsyringe";
+import "../../../dependencies_container";
 
 const usuarioRouter = Router();
-usuarioRouter.post("/", criarUsuario);
+const usuariosController = container.resolve(UsuariosController);
+console.log(usuariosController.criarUsuario);
+
+usuarioRouter.post("/", (req, res) => {
+  usuariosController.criarUsuario(req, res);
+});
 usuarioRouter.get("/", (req, res) => {
   return res.json({
     message: "Hello World",

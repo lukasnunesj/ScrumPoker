@@ -1,16 +1,22 @@
 import { Request, Response } from "express";
 import { UsuarioUC } from "../../../../core/application/Usuario/UsuarioUC";
-import { UsuariosDbRepository } from "../../../../adapters/data/usuarios/usuariosDbRepository";
 import { UsuarioRequest } from "../../../../core/application/Usuario/Requests/UsuarioRequest";
-import { container } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
+import { IUsuarioUC } from "../../../../core/application/Usuario/Ports/IUsuarioUC";
 
-export async function criarUsuario(req: Request, res: Response): Promise<Response> {
-  const request = new UsuarioRequest();
+@injectable()
+export class UsuariosController {
+  constructor(@inject("IUsuarioUC") private usuarioUC: IUsuarioUC) {}
 
-  request.data = req.body;
+  async criarUsuario(req: Request, res: Response): Promise<Response> {
+    console.log(this);
 
-  const usuarioUC = container.resolve(UsuarioUC);
+    const request = new UsuarioRequest();
 
-  const response = await usuarioUC.createUsuario(request);
-  return res.status(response.code).json(response);
+    request.data = req.body;
+    console.log(this.usuarioUC);
+
+    const response = await this.usuarioUC.createUsuario(request);
+    return res.status(response.code).json(response);
+  }
 }
