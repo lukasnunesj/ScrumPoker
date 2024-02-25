@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Router } from "express";
 import { BaralhosController } from "./controllers/baralhosController";
 import "../../../dependencies_container";

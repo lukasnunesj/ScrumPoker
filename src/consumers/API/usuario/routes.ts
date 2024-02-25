@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Router } from "express";
 import { UsuariosController } from "./controllers/usuariosController";
 import { container } from "tsyringe";

@@ -12,8 +12,8 @@ export class Tarefa {
     this.setPontuacao(pontuacao);
   }
 
-  private setId() {
-    this.id = v4();
+  private setId(id: string = v4()) {
+    this.id = id;
   }
 
   private setDescricao(descricao: string) {

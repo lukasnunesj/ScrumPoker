@@ -1,6 +1,7 @@
 export class NomeInvalidoError extends Error {
-  constructor(message: string) {
-    super(message);
+  constructor() {
+    super();
+    this.message = "Nome inválido";
     this.name = "NomeInvalidoError";
   }
 }

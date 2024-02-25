@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import express from "express";
 import "reflect-metadata";
 import { myDataSource } from "./adapters/data/data_source";

@@ -1,47 +1,41 @@
-import { v4 } from "uuid";
 import { IUsuarioRepository } from "../repositories/IUsuarioRepository";
 import { NomeInvalidoError } from "../errors/NomeInvalidoError";
+import { v4 as uuidv4 } from "uuid";
+import { IdInvalidoError } from "../errors/IdInvalidoError";
 
 export class Usuario {
   private id: string;
   private nome: string;
 
   constructor(nome: string) {
-    this.setId();
-    this.setNome(nome);
-  }
-
-  private setNome(nome: string) {
-    if (nome) {
-      this.nome = nome.trim();
-    }
+    this.id = uuidv4();
+    this.nome = nome?.trim();
     this.validation();
   }
 
-  private setId(id: string = v4()) {
-    this.id = id;
-  }
-
-  getNome() {
+  getNome(): string {
     return this.nome;
   }
 
-  getId() {
+  getId(): string {
     return this.id;
   }
 
-  convertFromEntity(id: string) {
-    this.setId(id);
+  convertFromEntity(id: string): this {
+    if (!id || id.length === 0) {
+      throw new IdInvalidoError();
+    }
+    this.id = id;
     return this;
   }
 
   private validation() {
     if (!this.getNome()) {
-      throw new NomeInvalidoError("Nome inválido");
+      throw new NomeInvalidoError();
     }
   }
 
-  async create(usuarioRepository: IUsuarioRepository) {
+  async create(usuarioRepository: IUsuarioRepository): Promise<void> {
     this.validation();
     await usuarioRepository.save(this);
   }

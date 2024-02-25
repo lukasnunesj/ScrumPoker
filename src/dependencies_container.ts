@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { container } from "tsyringe";
 import { UsuariosDbRepository } from "./adapters/data/usuarios/usuariosDbRepository";
 import { UsuarioUC } from "./core/application/Usuario/UsuarioUC";
