@@ -7,7 +7,7 @@ const mockUsuarioRepository = jest.mocked<IUsuarioRepository>({
   get: jest.fn(),
 });
 
-describe("Usuario", () => {
+describe(Usuario, () => {
   beforeEach(() => {
     mockUsuarioRepository.save.mockClear();
   });
@@ -24,7 +24,6 @@ describe("Usuario", () => {
     });
 
     it("should throw an error if name is empty", () => {
-      expect.assertions(4);
       expect(() => new Usuario(undefined)).toThrow("Nome inválido");
       expect(() => new Usuario(" ")).toThrow("Nome inválido");
       expect(() => new Usuario("")).toThrow("Nome inválido");
@@ -55,6 +54,33 @@ describe("Usuario", () => {
       }
 
       expect(mockUsuarioRepository.save).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("convertFromEntity", () => {
+    it("should set the id and return Usuario instance", () => {
+      const usuario = new Usuario("John");
+
+      const convertedUsuario = usuario.convertFromEntity("123");
+
+      expect(convertedUsuario.getId()).toBe("123");
+      expect(convertedUsuario.getNome()).toBe("John");
+      expect(convertedUsuario).toBeInstanceOf(Usuario);
+    });
+
+    it("should throw an error when called with invalid id", () => {
+      // Arrange
+      const usuario = new Usuario("John");
+
+      expect(() => {
+        usuario.convertFromEntity("");
+      }).toThrow("Id inválido");
+      expect(() => {
+        usuario.convertFromEntity(null);
+      }).toThrow("Id inválido");
+      expect(() => {
+        usuario.convertFromEntity(undefined);
+      }).toThrow("Id inválido");
     });
   });
 });
