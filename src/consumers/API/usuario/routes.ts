@@ -12,7 +12,11 @@ usuarioRouter.post("/", (req, res) => {
 });
 usuarioRouter.get("/", (req, res) => {
   return res.json({
-    message: "Hello World",
+    data: {
+      id: '1234',
+      nome: 'Pedro'
+    },
+    sucess:true,
   });
 });
 usuarioRouter.patch("/:id");
